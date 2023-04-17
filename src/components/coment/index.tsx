@@ -1,4 +1,4 @@
-import React,{useRef} from 'react'
+import React from 'react'
 import { useForm } from "react-hook-form";
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from "yup";
@@ -6,7 +6,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import type { RootState } from '../../store'
 import { useRouter } from 'next/router'
 import { postComment } from '../../redux/postSlice'
-import Input from '../form/input'
+import FormInput from '../form/input'
 import Button from '../common/button'
 import Layout from '../common/layout'
 
@@ -41,7 +41,7 @@ const Coments = () => {
                         </div>
                         <div className='border border-success rounded p-3'>
                             <form className="mb-3 form-input" onSubmit={handleSubmit(onSubmit)}>
-                               <Input label="" type="text"placeholder='enter comment...'
+                               <FormInput label="" type="text"placeholder='enter comment...'
                                    error={errors?.comment?.message} {...register("comment")}/>
                                     <Button text="comment"append="form-button" />
     

@@ -27,17 +27,19 @@ const Post = () => {
     const { editid } = router.query
     const editId = parseInt(editid as string);
     const editData = post.find(data => data.id === editId)
-
+    /* eslint-disable */
     useEffect(() => {
          if (editData) {
             setIsEdit(true)
             setValue('post', editData.post)
         }
-    }, [editData])
+    }, [editId])
+    /* eslint-disable */
 
    const id = post.length;
     const onSubmit = (data: FormData) => {
         if (isEdit) {
+            console.log(data,"data")
             dispatch(editPost({ data, editId }))
             setIsEdit(!isEdit)
             router.push("/")
@@ -55,8 +57,9 @@ const Post = () => {
                 <div className="mt-3 w-50">
                     <form onSubmit={handleSubmit(onSubmit)}>
                        
-                        <TextArea error={errors?.post?.message}label ="Post something" {...register("post")}
+                        <TextArea error={errors?.post?.message}label ="Post something" 
                             placeholder='what is on your mind...'
+                            {...register("post")}
                         />
                         <Button append="mt-2" text={isEdit ? "Update" : "Post"}/>
                     </form>

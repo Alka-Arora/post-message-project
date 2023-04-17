@@ -6,13 +6,10 @@ import { store,persistor } from '../store'
 import { Provider } from 'react-redux'
 import { PersistGate } from 'redux-persist/integration/react'
 import { ClerkProvider, RedirectToSignIn, SignedIn, SignedOut } from '@clerk/nextjs';
-import { useRouter } from 'next/router';
 import { ClerkLoaded } from '@clerk/clerk-react';
 
-const clerkReactKey = process.env.REACT_APP_CLERK_PUBLISHABLE_KEY;
 
 export default function App({ Component, pageProps }: AppProps) {
-  const router=useRouter()
   return (
 
     <>
@@ -35,7 +32,7 @@ export default function App({ Component, pageProps }: AppProps) {
       <PersistGate loading={
         <div className='text-success fs-4 text-center'>Loading...</div>
       } persistor={persistor}>
-        <ClerkProvider frontendApi={clerkReactKey}>
+        <ClerkProvider>
         <ClerkLoaded>
           <SignedIn>
         <Component {...pageProps} />

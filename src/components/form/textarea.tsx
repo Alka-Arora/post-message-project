@@ -14,10 +14,11 @@ const TextArea = forwardRef((props:inputProps,ref:ForwardedRef<InputRef>) => {
         <>
         <label>{label}</label>
 
-        <textarea className="form-control"rows={3} placeholder={placeholder} ref={ref}/>
+        <textarea className="form-control"rows={3} placeholder={placeholder} ref={ref}{...rest}/>
       
       {error && <p className="text-danger">{error}</p>}
       </>
     );
   });
+  TextArea.displayName="TextArea"
 export default TextArea
